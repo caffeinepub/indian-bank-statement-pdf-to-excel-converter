@@ -1,2 +1,3 @@
-# indian-bank-statement-pdf-to-excel-converter
-Exported from Caffeine project: Indian bank statement PDF to Excel converter
+## 
+
+To run app build and run docker image: `docker build -t app . docker run -it --network host app`

@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --radius: 0.5rem;
+        
+        /* Emerald/Green finance theme - Light mode */
+        --background: 0.99 0 0;
+        --foreground: 0.15 0 0;
+        --card: 1 0 0;
+        --card-foreground: 0.15 0 0;
+        --popover: 1 0 0;
+        --popover-foreground: 0.15 0 0;
+        
+        /* Primary: Emerald green */
+        --primary: 0.55 0.15 160;
+        --primary-foreground: 0.99 0 0;
+        
+        /* Secondary: Neutral gray */
+        --secondary: 0.96 0 0;
+        --secondary-foreground: 0.15 0 0;
+        
+        /* Muted: Light gray */
+        --muted: 0.96 0.005 160;
+        --muted-foreground: 0.50 0 0;
+        
+        /* Accent: Teal */
+        --accent: 0.65 0.12 180;
+        --accent-foreground: 0.99 0 0;
+        
+        /* Destructive: Red */
+        --destructive: 0.55 0.22 25;
+        --destructive-foreground: 0.99 0 0;
+        
+        /* Borders and inputs */
+        --border: 0.90 0.01 160;
+        --input: 0.90 0.01 160;
+        --ring: 0.55 0.15 160;
+        
+        /* Charts */
+        --chart-1: 0.55 0.15 160;
+        --chart-2: 0.65 0.12 180;
+        --chart-3: 0.70 0.18 140;
+        --chart-4: 0.45 0.12 200;
+        --chart-5: 0.60 0.10 120;
+    }
+
+    .dark {
+        /* Dark mode with emerald accents */
+        --background: 0.12 0.01 160;
+        --foreground: 0.98 0 0;
+        --card: 0.16 0.01 160;
+        --card-foreground: 0.98 0 0;
+        --popover: 0.18 0.01 160;
+        --popover-foreground: 0.98 0 0;
+        
+        /* Primary: Brighter emerald for dark mode */
+        --primary: 0.70 0.18 160;
+        --primary-foreground: 0.12 0.01 160;
+        
+        /* Secondary: Dark gray */
+        --secondary: 0.22 0.01 160;
+        --secondary-foreground: 0.98 0 0;
+        
+        /* Muted: Medium gray */
+        --muted: 0.25 0.01 160;
+        --muted-foreground: 0.65 0 0;
+        
+        /* Accent: Bright teal */
+        --accent: 0.75 0.15 180;
+        --accent-foreground: 0.12 0.01 160;
+        
+        /* Destructive: Bright red */
+        --destructive: 0.65 0.25 25;
+        --destructive-foreground: 0.12 0.01 160;
+        
+        /* Borders and inputs */
+        --border: 0.25 0.02 160;
+        --input: 0.25 0.02 160;
+        --ring: 0.70 0.18 160;
+        
+        /* Charts */
+        --chart-1: 0.70 0.18 160;
+        --chart-2: 0.75 0.15 180;
+        --chart-3: 0.80 0.20 140;
+        --chart-4: 0.60 0.15 200;
+        --chart-5: 0.75 0.12 120;
+    }
+
+    * {
+        @apply border-border;
+    }
+    
+    body {
+        @apply bg-background text-foreground;
+        font-feature-settings: "rlig" 1, "calt" 1;
+    }
+}

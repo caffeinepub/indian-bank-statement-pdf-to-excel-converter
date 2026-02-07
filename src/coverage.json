@@ -1,0 +1,82 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-07T11:05:51.049Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 4,
+    "implemented": 4,
+    "items": [
+      {
+        "id": "REQ-10",
+        "summary": "Update the Review step transactions table UI to include a “Reference” column that is visible and editable (inline edit) alongside Date, Description, Debit, Credit, and Balance.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/features/converter/components/TransactionsTableEditor.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/features/converter/components/TransactionsTableEditor.tsx"
+        ]
+      },
+      {
+        "id": "REQ-11",
+        "summary": "Include the “Reference” column in the exported Excel (.xlsx) output, and ensure it exports the currently edited values from the Review table.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/features/converter/lib/exportXlsx.ts",
+          "frontend/src/features/converter/PdfToExcelPage.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/features/converter/lib/exportXlsx.ts"
+        ]
+      },
+      {
+        "id": "REQ-12",
+        "summary": "Enhance the HDFC bank template configuration and extraction diagnostics to recognize a Reference column label (e.g., “Reference”, “Ref No”, “Reference No”, “UTR”, “Chq/Ref No”) and report it in detected columns when present.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/features/converter/lib/bankTemplates.ts",
+          "frontend/src/features/converter/lib/pdfExtract.ts"
+        ],
+        "matchedFiles": [
+          "frontend/src/features/converter/lib/bankTemplates.ts",
+          "frontend/src/features/converter/lib/pdfExtract.ts"
+        ]
+      },
+      {
+        "id": "REQ-9",
+        "summary": "Add a new optional transaction field for HDFC statements: a “Reference” value (also commonly labeled as Ref No, Reference No, UTR, or Chq/Ref No) so extracted transactions can store and display this value.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/features/converter/types.ts",
+          "frontend/src/features/converter/lib/normalize.ts",
+          "frontend/src/features/converter/lib/pdfExtract.ts"
+        ],
+        "matchedFiles": [
+          "frontend/src/features/converter/types.ts",
+          "frontend/src/features/converter/lib/normalize.ts",
+          "frontend/src/features/converter/lib/pdfExtract.ts"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "build-request.json",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/src/features/converter/components/TransactionsTableEditor.tsx",
+    "frontend/src/features/converter/lib/bankTemplates.ts",
+    "frontend/src/features/converter/lib/exportXlsx.ts",
+    "frontend/src/features/converter/lib/normalize.ts",
+    "frontend/src/features/converter/lib/pdfExtract.ts",
+    "frontend/src/features/converter/types.ts",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

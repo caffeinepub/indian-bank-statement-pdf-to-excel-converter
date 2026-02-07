@@ -1,0 +1,128 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 7,
+  "summary": "Build an Indian bank statement PDF to Excel converter.",
+  "architectural_notes": [
+    "Add explicit bank template dropdown entries (e.g., HDFC) that switch parsing heuristics and column mappings; include a reference mapping/table for HDFC layouts."
+  ],
+  "known_issues": [
+    "Some PDFs fail to convert when the transaction table cannot be reliably detected (e.g., scanned/image PDFs or irregular layouts such as certain HDFC statements)."
+  ],
+  "isFixRequest": true,
+  "existing_features": [
+    {
+      "id": "feature-create-a-single-page-pdf-to-excel-converter-ui-that-lets-the-user-upload-an-indian-bank-statement-pdf-extracts-the-transaction-table-previews-the-parsed-rows-and-exports-the-result-as-an-xlsx-file",
+      "title": "Create a single-page PDF-to-Excel converter UI that lets the user upload an Indian bank statement PDF, extracts the transaction table, previews the parsed rows, and exports the result as an .xlsx file.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-client-side-pdf-text-table-extraction-that-works-without-sending-the-pdf-to-the-backend-including-a-robust-fallback-flow-for-imperfect-pdfs-scanned-pdfs-irregular-formatting-by-allowing-the-user-to-adjust-parsing-settings-and-re-run-extraction",
+      "title": "Implement client-side PDF text/table extraction that works without sending the PDF to the backend, including a robust fallback flow for imperfect PDFs (scanned PDFs, irregular formatting) by allowing the user to adjust parsing settings and re-run extraction.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-support-for-multiple-indian-bank-statement-layouts-by-introducing-a-pluggable-bank-template-selection-e-g-auto-detect-sbi-hdfc-icici-axis-kotak-yes-bank-pnb-where-each-template-defines-parsing-heuristics-and-column-mapping",
+      "title": "Add support for multiple Indian bank statement layouts by introducing a pluggable 'bank template' selection (e.g., Auto-detect, SBI, HDFC, ICICI, Axis, Kotak, Yes Bank, PNB), where each template defines parsing heuristics and column mapping.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-provide-data-cleanup-tools-in-the-preview-step-column-mapping-row-editing-removing-non-transaction-rows-and-basic-normalization-date-normalization-and-numeric-parsing-for-debit-credit-balance",
+      "title": "Provide data cleanup tools in the preview step: column mapping, row editing, removing non-transaction rows, and basic normalization (date normalization and numeric parsing for debit/credit/balance).",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-consistent-distinct-visual-theme-for-the-app-colors-typography-spacing-and-components-suitable-for-a-finance-utility-tool-avoid-blue-purple-as-primary-colors",
+      "title": "Add a consistent, distinct visual theme for the app (colors, typography, spacing, and components) suitable for a finance utility tool; avoid blue/purple as primary colors.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-basic-privacy-messaging-and-local-processing-reassurance-in-the-ui-stating-that-pdfs-are-processed-locally-in-the-browser-and-are-not-uploaded-unless-the-user-explicitly-enables-any-future-save-share-feature",
+      "title": "Add basic privacy messaging and local-processing reassurance in the UI, stating that PDFs are processed locally in the browser and are not uploaded (unless the user explicitly enables any future save/share feature).",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-render-newly-generated-static-image-assets-logo-and-a-lightweight-hero-empty-state-illustration-from-frontend-public-assets-generated-and-use-them-in-the-app-shell-header-and-upload-empty-state",
+      "title": "Render newly generated static image assets (logo and a lightweight hero/empty-state illustration) from frontend/public/assets/generated and use them in the app shell (header) and upload/empty state.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-short-user-facing-guidance-section-on-the-main-pdf-to-excel-page-that-explains-1-the-3-step-process-upload-review-export-and-2-why-the-app-generates-an-excel-xlsx-file-after-parsing-a-bank-statement-pdf-the-guidance-must-be-in-english-and-should-be-visible-from-the-upload-step-without-requiring-a-pdf-to-be-selected",
+      "title": "Add a short, user-facing guidance section on the main PDF-to-Excel page that explains (1) the 3-step process (Upload → Review → Export) and (2) why the app generates an Excel (.xlsx) file after parsing a bank-statement PDF. The guidance must be in English and should be visible from the Upload step without requiring a PDF to be selected.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-new-optional-transaction-field-for-hdfc-statements-a-reference-value-also-commonly-labeled-as-ref-no-reference-no-utr-or-chq-ref-no-so-extracted-transactions-can-store-and-display-this-value",
+      "title": "Add a new optional transaction field for HDFC statements: a “Reference” value (also commonly labeled as Ref No, Reference No, UTR, or Chq/Ref No) so extracted transactions can store and display this value.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-review-step-transactions-table-ui-to-include-a-reference-column-that-is-visible-and-editable-inline-edit-alongside-date-description-debit-credit-and-balance",
+      "title": "Update the Review step transactions table UI to include a “Reference” column that is visible and editable (inline edit) alongside Date, Description, Debit, Credit, and Balance.",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-include-the-reference-column-in-the-exported-excel-xlsx-output-and-ensure-it-exports-the-currently-edited-values-from-the-review-table",
+      "title": "Include the “Reference” column in the exported Excel (.xlsx) output, and ensure it exports the currently edited values from the Review table.",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-enhance-the-hdfc-bank-template-configuration-and-extraction-diagnostics-to-recognize-a-reference-column-label-e-g-reference-ref-no-reference-no-utr-chq-ref-no-and-report-it-in-detected-columns-when-present",
+      "title": "Enhance the HDFC bank template configuration and extraction diagnostics to recognize a Reference column label (e.g., “Reference”, “Ref No”, “Reference No”, “UTR”, “Chq/Ref No”) and report it in detected columns when present.",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Create a converter tool that parses Indian bank statement PDFs and exports the data to an Excel file.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Add an HDFC Bank option to the bank-template dropdown and include HDFC-specific parsing rules plus a 'Reference' table/column mapping to improve extraction.",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Indian bank statement PDF to Excel converter",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

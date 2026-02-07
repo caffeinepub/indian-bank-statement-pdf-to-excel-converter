@@ -1,0 +1,89 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Add HDFC Reference column in review table and Excel export",
+  "requirements": [
+    {
+      "id": "REQ-9",
+      "summary": "Extend the client-side Transaction model to support an optional Reference value for HDFC statements without impacting other templates.",
+      "acceptanceCriteria": [
+        "Transaction type supports a Reference field without breaking existing parsing/export flows.",
+        "Existing bank statement conversions (non-HDFC templates) continue to work even when Reference is absent/empty."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/features/converter/types.ts",
+          "operation": "modify",
+          "description": "Add an optional Transaction field for reference (e.g., reference?: string) and extend BankTemplateConfig.columnMapping to optionally include reference synonyms."
+        },
+        {
+          "path": "frontend/src/features/converter/lib/normalize.ts",
+          "operation": "modify",
+          "description": "Ensure normalization preserves the optional reference field (no transformation required) and does not introduce regressions when reference is empty/undefined."
+        },
+        {
+          "path": "frontend/src/features/converter/lib/pdfExtract.ts",
+          "operation": "modify",
+          "description": "Update extracted Transaction objects to optionally populate the reference field when it can be derived for HDFC statements, while leaving it empty/undefined for other templates to avoid breaking existing flows."
+        }
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "summary": "Add a visible and inline-editable Reference column to the Review step transactions table.",
+      "acceptanceCriteria": [
+        "The Review table header includes an English label “Reference”.",
+        "Each row shows the Reference value (empty if not available).",
+        "When a row is in edit mode, Reference is editable and saving persists the updated value in the table state."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/features/converter/components/TransactionsTableEditor.tsx",
+          "operation": "modify",
+          "description": "Insert a new “Reference” column (positioned alongside existing columns) and add inline editing support for transaction.reference using existing composed shadcn-ui Table/Input/Button components. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "summary": "Export Reference to XLSX using the current Review table (edited) values in a consistent column order.",
+      "acceptanceCriteria": [
+        "The generated XLSX contains a “Reference” column between Description and Debit (or another consistent position), and values match what is shown in the Review table.",
+        "Export works with empty Reference values (cells blank) without errors."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/features/converter/lib/exportXlsx.ts",
+          "operation": "modify",
+          "description": "Include a “Reference” column in the exported rows sourced from txn.reference and update worksheet column widths/order so Reference is placed consistently (preferably between Description and Debit)."
+        },
+        {
+          "path": "frontend/src/features/converter/PdfToExcelPage.tsx",
+          "operation": "modify",
+          "description": "Ensure the export action continues to pass the current in-memory transactions state (including any edited reference values) so the XLSX reflects the Review table."
+        }
+      ]
+    },
+    {
+      "id": "REQ-12",
+      "summary": "Enhance HDFC template configuration and extraction diagnostics to recognize and report Reference column labels/synonyms when present.",
+      "acceptanceCriteria": [
+        "HDFC template includes Reference/Ref synonyms in its column mapping configuration.",
+        "Extraction diagnostics can include “reference” in its detectedColumns when the parser identifies it.",
+        "No regression in auto-detect or other templates’ column mappings."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/features/converter/lib/bankTemplates.ts",
+          "operation": "modify",
+          "description": "Extend the HDFC template columnMapping to include reference synonyms (e.g., “Reference”, “Ref No”, “Reference No”, “UTR”, “Chq/Ref No”) while keeping other templates unchanged to avoid regressions."
+        },
+        {
+          "path": "frontend/src/features/converter/lib/pdfExtract.ts",
+          "operation": "modify",
+          "description": "Update diagnostics computation so detectedColumns conditionally includes “reference” when header/label detection finds any configured reference synonyms (particularly for HDFC), without altering non-HDFC behavior."
+        }
+      ]
+    }
+  ]
+}

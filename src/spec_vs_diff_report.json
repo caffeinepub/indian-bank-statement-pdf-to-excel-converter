@@ -1,0 +1,46 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-07T11:05:51.045Z",
+  "summary": "The diff adds an optional `reference` field to the Transaction type, displays and inline-edits a new “Reference” column in the Review table, and includes “Reference” in XLSX export. HDFC template mapping now contains multiple reference/UTR synonyms. The PDF extraction diagnostics/reference handling appears to be in-progress but is truncated in the provided diff, so full confirmation of REQ-12’s diagnostics behavior and reference extraction cannot be made from the visible evidence.",
+  "missing_requirements": [
+    {
+      "id": "REQ-12",
+      "requirement": "Enhance the HDFC bank template configuration and extraction diagnostics to recognize a Reference column label and report it in detectedColumns when present.",
+      "reason": "HDFC template mapping includes reference synonyms, but the pdf extraction change that should add \"reference\" into `diagnostics.detectedColumns` is truncated before showing the actual mutation/append of the array, so it is not fully evidenced that diagnostics will report it when present (and that reference extraction itself is wired end-to-end).",
+      "evidence": [
+        "frontend/src/features/converter/lib/bankTemplates.ts",
+        "frontend/src/features/converter/lib/pdfExtract.ts (truncated)"
+      ]
+    }
+  ],
+  "hallucinated_features": [
+    {
+      "description": "Load SheetJS (XLSX) from a CDN at runtime instead of using a bundled dependency (and related dependency removals).",
+      "reason": "The BuildRequest only asked to add a Reference column to the review table, HDFC template detection/diagnostics, and XLSX export content; it did not request changing how XLSX is loaded or altering dependencies.",
+      "evidence": [
+        "frontend/src/features/converter/lib/exportXlsx.ts",
+        "frontend/package.json (mentioned in frontend-file-summaries.txt)"
+      ]
+    },
+    {
+      "description": "Load PDF.js from a CDN at runtime instead of using a bundled dependency (and related dependency removals).",
+      "reason": "The BuildRequest constrained PDF extraction to remain client-side, but did not request changing the PDF.js loading strategy or dependency management.",
+      "evidence": [
+        "frontend/src/features/converter/lib/pdfExtract.ts (truncated)",
+        "frontend/package.json (mentioned in frontend-file-summaries.txt)"
+      ]
+    }
+  ],
+  "confidence": 0.74,
+  "changed_files": [
+    "frontend-file-summaries.txt",
+    "frontend/src/features/converter/components/TransactionsTableEditor.tsx",
+    "frontend/src/features/converter/lib/bankTemplates.ts",
+    "frontend/src/features/converter/lib/exportXlsx.ts",
+    "frontend/src/features/converter/lib/normalize.ts",
+    "frontend/src/features/converter/lib/pdfExtract.ts",
+    "frontend/src/features/converter/types.ts",
+    "project_state.json"
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "kind": "build_request",
+  "title": "Add HDFC Reference (Ref) column support in review table and Excel export",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-9",
+      "text": "Add a new optional transaction field for HDFC statements: a “Reference” value (also commonly labeled as Ref No, Reference No, UTR, or Chq/Ref No) so extracted transactions can store and display this value.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "HDFC BANK ADD DROP DOWDN LIST ADD & REF TABAL & COLAM"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Transaction type supports a Reference field without breaking existing parsing/export flows.",
+        "Existing bank statement conversions (non-HDFC templates) continue to work even when Reference is absent/empty."
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "text": "Update the Review step transactions table UI to include a “Reference” column that is visible and editable (inline edit) alongside Date, Description, Debit, Credit, and Balance.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "HDFC BANK ADD DROP DOWDN LIST ADD & REF TABAL & COLAM"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The Review table header includes an English label “Reference”.",
+        "Each row shows the Reference value (empty if not available).",
+        "When a row is in edit mode, Reference is editable and saving persists the updated value in the table state."
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "text": "Include the “Reference” column in the exported Excel (.xlsx) output, and ensure it exports the currently edited values from the Review table.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "HDFC BANK ADD DROP DOWDN LIST ADD & REF TABAL & COLAM"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The generated XLSX contains a “Reference” column between Description and Debit (or another consistent position), and values match what is shown in the Review table.",
+        "Export works with empty Reference values (cells blank) without errors."
+      ]
+    },
+    {
+      "id": "REQ-12",
+      "text": "Enhance the HDFC bank template configuration and extraction diagnostics to recognize a Reference column label (e.g., “Reference”, “Ref No”, “Reference No”, “UTR”, “Chq/Ref No”) and report it in detected columns when present.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "HDFC BANK ADD DROP DOWDN LIST ADD & REF TABAL & COLAM"
+        ]
+      },
+      "acceptanceCriteria": [
+        "HDFC template includes Reference/Ref synonyms in its column mapping configuration.",
+        "Extraction diagnostics can include “reference” in its detectedColumns when the parser identifies it.",
+        "No regression in auto-detect or other templates’ column mappings."
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not edit files under frontend/src/components/ui (read-only UI components); compose them instead.",
+    "Keep all PDF extraction client-side; do not upload PDFs to the backend.",
+    "Backend remains a single Motoko actor; no backend changes are required for this request."
+  ],
+  "nonGoals": [
+    "Adding new authentication methods or third-party integrations.",
+    "Building a new backend storage/database for transactions.",
+    "Improving OCR for scanned/image-only PDFs as part of this change."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}

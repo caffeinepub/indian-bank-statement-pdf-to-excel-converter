@@ -1,0 +1,19 @@
+{
+  "frontend/src/App.tsx": "Main application component that renders the PDF to Excel converter page wrapped in the app shell layout.",
+  "frontend/src/components/layout/AppShell.tsx": "Application shell component providing consistent header with logo, main content area, and footer with privacy messaging and attribution.",
+  "frontend/src/features/converter/PdfToExcelPage.tsx": "Main converter page orchestrating the 3-step flow with state management for PDF processing, transaction extraction (including reference field), and async Excel export with ConversionGuidance sidebar on Upload step.",
+  "frontend/src/features/converter/components/UploadDropzone.tsx": "Drag-and-drop file upload component with privacy messaging, file picker, and processing state indicators.",
+  "frontend/src/features/converter/components/ParsingSettingsPanel.tsx": "Settings panel for adjusting PDF extraction parameters including bank template selection, date format, page range, and header detection.",
+  "frontend/src/features/converter/components/TransactionsTableEditor.tsx": "Interactive table component for reviewing, editing, and deleting extracted transactions with inline editing capabilities; now includes a Reference column positioned between Description and Debit with full edit support.",
+  "frontend/src/features/converter/types.ts": "TypeScript type definitions for transactions (now including optional reference field), parsing settings, extraction results, and bank template configurations with optional reference column mapping.",
+  "frontend/src/features/converter/lib/bankTemplates.ts": "Bank template definitions for SBI, HDFC, ICICI, Axis, and Kotak with pattern matching and column mapping configurations; HDFC template now includes reference synonyms for detecting reference/UTR/cheque numbers.",
+  "frontend/src/features/converter/lib/pdfExtract.ts": "Client-side PDF text extraction that loads PDF.js from CDN with bank detection and transaction parsing logic; now extracts reference field for HDFC statements and includes reference in detected columns diagnostics.",
+  "frontend/src/features/converter/lib/normalize.ts": "Data normalization utilities for dates (to YYYY-MM-DD format) and amounts (removing commas, parsing Indian number formats); now preserves the optional reference field during normalization.",
+  "frontend/src/features/converter/lib/exportXlsx.ts": "Excel export functionality that loads SheetJS from CDN to generate downloadable XLSX files from transaction data; now includes Reference column between Description and Debit in the exported spreadsheet.",
+  "frontend/src/index.css": "Global styles with emerald/green finance theme using OKLCH color system for both light and dark modes.",
+  "frontend/tailwind.config.js": "Tailwind configuration with custom emerald/green color palette, Inter font family, and extended design tokens.",
+  "frontend/package.json": "Package configuration with removed xlsx and pdfjs-dist dependencies since they are now loaded from CDN at runtime.",
+  "frontend/src/hooks/useQueries.ts": "Placeholder file for React Query hooks (not needed for this fully client-side application).",
+  "frontend/tsconfig.json": "TypeScript configuration with module resolution settings, path aliases, and compiler options to support the React application with proper module handling.",
+  "frontend/src/features/converter/components/ConversionGuidance.tsx": "Guidance component that explains the 3-step conversion workflow (Upload → Review → Export) and the rationale for Excel export, displayed as a card with icons and badges aligned with local-processing privacy messaging."
+}

@@ -1,0 +1,80 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-add-a-new-optional-transaction-field-for-hdfc-statements-a-reference-value-also-commonly-labeled-as-ref-no-reference-no-utr-or-chq-ref-no-so-extracted-transactions-can-store-and-display-this-value",
+      "featureTitle": "Add a new optional transaction field for HDFC statements: a “Reference” value (also commonly labeled as Ref No, Reference No, UTR, or Chq/Ref No) so extracted transactions can store and display this value.",
+      "files": [
+        "frontend/src/features/converter/lib/normalize.ts",
+        "frontend/src/features/converter/lib/pdfExtract.ts",
+        "frontend/src/features/converter/types.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-9"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-update-the-review-step-transactions-table-ui-to-include-a-reference-column-that-is-visible-and-editable-inline-edit-alongside-date-description-debit-credit-and-balance",
+      "featureTitle": "Update the Review step transactions table UI to include a “Reference” column that is visible and editable (inline edit) alongside Date, Description, Debit, Credit, and Balance.",
+      "files": [
+        "frontend/src/features/converter/components/TransactionsTableEditor.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-10"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-include-the-reference-column-in-the-exported-excel-xlsx-output-and-ensure-it-exports-the-currently-edited-values-from-the-review-table",
+      "featureTitle": "Include the “Reference” column in the exported Excel (.xlsx) output, and ensure it exports the currently edited values from the Review table.",
+      "files": [
+        "frontend/src/features/converter/lib/exportXlsx.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-11"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-enhance-the-hdfc-bank-template-configuration-and-extraction-diagnostics-to-recognize-a-reference-column-label-e-g-reference-ref-no-reference-no-utr-chq-ref-no-and-report-it-in-detected-columns-when-present",
+      "featureTitle": "Enhance the HDFC bank template configuration and extraction diagnostics to recognize a Reference column label (e.g., “Reference”, “Ref No”, “Reference No”, “UTR”, “Chq/Ref No”) and report it in detected columns when present.",
+      "files": [
+        "frontend/src/features/converter/lib/bankTemplates.ts",
+        "frontend/src/features/converter/lib/pdfExtract.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-12"
+      ],
+      "confidence": "high"
+    }
+  ]
+}
